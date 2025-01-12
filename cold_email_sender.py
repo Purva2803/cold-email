@@ -49,7 +49,7 @@ class ColdEmailSender:
         message['Message-ID'] = f"<{uuid.uuid4()}@gmail.com>"
         message['Date'] = formatdate(localtime=True)
         message['To'] = to
-        message['From'] = formataddr(("Purva Rajyaguru", sender))
+        message['From'] = formataddr(("Your Name", sender))  # Replace with your name
         message['Subject'] = subject
         message['MIME-Version'] = '1.0'
         
@@ -60,7 +60,7 @@ class ColdEmailSender:
         text_part = MIMEText(message_text, 'plain', 'utf-8')
         body.attach(text_part)
         
-        # HTML version (optional but helps with formatting)
+        # HTML version
         html_content = message_text.replace('\n', '<br>')
         html_part = MIMEText(f"<html><body>{html_content}</body></html>", 'html', 'utf-8')
         body.attach(html_part)
@@ -123,97 +123,20 @@ class ColdEmailSender:
 def main():
     sender = ColdEmailSender()
     
-    # Test with your own email first
+    # Example usage
     email_list = [
-    # Example emails
-   'p65219175@gmail.com' 
-    # SingleStore
-    'juhi.singh@singlestore.com',
-    'sakina.makda@singlestore.com',
-    
-    # Syngenta
-    'harish.paunikar@syngenta.com',
-    
-    # Swiggy
-    'sanya.gupta@swiggy.com',
-    'vama.sikka@swiggy.com',
-    'shivani.bhagat@swiggy.com',
-    
-    # Medibuddy
-    'Natasha.Panigrahy@medibuddy.com',
-    'punith.r@meddibuddy.com',
-    
-    # Ather
-    'Sahityi.Patole@ather.com',
-    
-    # Gokwik
-    'veena@gokwik.co',
-    'chetna@gokwik.co',
-    'ritu.singh@gokwik.co',
-    'omkar@gokwik.co',
-    
-    # Cropin
-    'saumya.singh@cropin.com',
-    'raksha.sriram@cropin.com',
-    'aishwarya.rajvedi@cropin.com',
-    
-    # SuperOps
-    'uma.p@superops.com',
-    'vidhya.sam@superops.com',
-    
-    # PlumHQ
-    'gauri@plumhq.com',
-    'geetanjali@plumhq.com',
-    'sharanjeet@plumhq.com',
-    'shimran@plumhq.com',
-    
-    # Avaloq
-    'divya.tandon@avaloq.com',
-    'pranali.pradhan@avaloq.com',
-    'manoj.gawda@avaloq.com',
-    
-    # Bizongo
-    'prashanth.c@bizongo.com',
-    'rahul.dhar@bizongo.com',
-    'sachin@bizongo.com',
-    
-    # Turtlemint
-    'naresh.sahu@turtlemint.com',
-    'amruta.palav@turtlemint.com',
-    'sahil.yadav@turtlemint.com',
-    'aniruddh.parab@turtlemint.com',
-    
-    # Blackbuck
-    'khadija.agha@blackbuck.com',
-    'riya.gautam@blackbuck.com',
-    'bikramjit.singh@blackbuck.com',
-    'amit.mohanpatra@blackbuck.com',
-    
-    # LeadSquared
-    'neetu.handa@leadsquared.com'
-]
+        'your.email@example.com'  # Replace with your email for testing
+    ]
 
-# Print total number of emails
+    subject = "Your Email Subject"
+    message_text = """Dear Hiring Manager,
 
-    subject = "Application for Software Developer Position"
-    message_text = """
-
-Hope you're well. I am Purva Rajyaguru, and I am interested in the Software Engineer Role (Backend).
-
-I have 1+ years of experience as a software engineer, where I tackled various challenging projects. I'm enthusiastic about coding, and I've honed my skills through practical experience. I have experience in working with frontend and backend as well.
-
-I've attached my resume for you to look over as well as my GitHub contains my work. I will work hard and give my Best if I get the opportunity to work with you. I am open to taking challenges and learning.
-
-Let me know if there is any possibility of working with you or if you have any open positions.
-
-Looking forward to hearing from you!  
-
-Github Link: https://github.com/Purva2803 
+Your email content here.
 
 Best regards,
-Purva Rajyaguru"""
+Your Name"""
     
-    resume_path = 'Purva_Rajyaguru.pdf'
+    resume_path = 'your_resume.pdf'  # Replace with your resume filename
     
     print(f"Total number of emails: {len(email_list)}")
     
